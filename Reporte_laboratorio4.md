@@ -1,0 +1,21 @@
+# Reporte Laboratorio 4 - Listas Enlazadas
+El objetivo de este laboratorio es poner en práctica conocimientos relativos a estructuras de datos en C.
+Para este fin, se creó un programa que crea una lista enlazada cuyo nodo contiene únicamente un entero como dato y un puntero al siguiente elemento. Además, el programa cuenta con las siguientes operaciones: agregar un nodo al final de la lista, eliminar un nodo por valor, agregar un nodo al inicio, buscar un nodo por valor, imprimir la lista y obtener el n-ésimo elemento. Por su parte, en la función `main` del programa se ejemplifica el uso de cada una de estas operaciones. Se verifica finalmente que no existan memory leaks en el código.
+## Agregar un nodo al final
+Para agregar un nodo al final de la lista se crea una función llamada `append`. Primero se debe reservar memoria dinámica para un nuevo nodo, el tamaño de la memoria asignada será el tamaño de una estructura `Nodo`, la dirección de la memoria asignada se almacena en una variable (`newNode`), la cual es un puntero a un nodo. Se establece el valor del dato y el siguiente se establece en `NULL` dado que el valor se agregó al final. Luego se verifica si la lista está vacía en cuyo caso el elemento recién agregado será el primero y único. Si no está vacía, se recorre hasta encontrar el último nodo para agregar el nuevo nodo al final.
+## Eliminar un nodo por valor
+Se efectúa mediante la función `deleteNode`. Se declaran punteros a los nodos actual y anterior, y se recorre la lista en busca del nodo que contiene el valor que se desea eliminar por medio de un `while` lope.
+## Agregar un nodo al inicio
+Esto se lleva a cabo por medio de la función denominada con el nombre común de `prepend` para este tipo de operaciones. En esta se reserva memoria dinámica para el nuevo nodo, al igual que en el caso de agregar un nuevo nodo al final de la lista. El campo siguiente (`next`) del nuevo nodo se establece para que apunte al primer nodo de la lista (apuntado por `*head`), con lo cual se coloca el nuevo nodo al principio de la lista, actualizando el puntero para que apunte al nuevo nodo.
+## Buscar un nodo por valor
+Se implementa mediante la función `searchNode`. Se efectúa utilizando un puntero a nodo llamado `current` y se inicializa con el valor apuntado por `head`, que corresponde al primer nodo de la lista, y éste se utiliza para ir recorriendo la lista en busca del nodo que tiene el valor buscado. Para esto, se utiliza un `while` loop en el cual se verifica con un `if` en cada iteración si el valor corresponde al dato del nodo y entonces se ha encontrado el valor. Si al terminar el bucle en el último nodo no se encontró el valor, se imprime un mensaje.
+## Imprimir la lista
+Para imprimir la lista se utiliza la función `printList`, la cual toma un puntero `head` como argumento, el cual apunta al primer nodo de la lista enlzada, declara un puntero a nodo actual que se inicializa con el valor apuntado por `head` para iniciar la impresión desde el primero. En un bucle `while` que recorre toda la lista, se imprimen los valores de los nodos y `NULL` para indicar el final.
+## Obtener el n-ésimo elemento
+Esta operación se implementa por medio de la función llamada `getNthNode`. Igualmente se utiliza un puntero al nodo actual que se inicializa al primer nodo, así como una variable de posición. Nuevamente en un bucle `while` se recorre la lista en busca de coincidencia en el valor del índice y cuando se da, se imprime el mensaje correspondiente. De lo contrario si se llega al final y no se encuentra, se indica esta condición.
+## Resultados
+A contiunación se muestran capturas de pantalla de la ejecución del programa, de acuerdo con los ejemplos establecidos en la función `main`. Se agregan elementos al inicio y al final, se imprime la lista, luego se eliminan elementos y se imprime nuevamente. También se hacen las búsquedas por valor y por índice, con lo cual se verifica el funcionamiento de todas las diferentes operaciones. Además, se agrega una captura del reporte de Valgrind, en donde se comprueba que no existen memory leaks.
+### Ejecución del programa
+![ejecucion](https://raw.githubusercontent.com/mareyes1/Lab2/main/ejecucion_lab4.png)
+### Reporte de Valgrind
+![valgrind](https://raw.githubusercontent.com/mareyes1/Lab2/main/valgrind_lab4.png)
